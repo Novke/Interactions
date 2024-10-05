@@ -36,8 +36,8 @@ public class TagService {
     }
 
     public void deleteTag(String tagname){
-        List<TagEntity> tags = tagRepository.findAllByName(tagname);
-        if (tags.isEmpty()) throw new EntityNotFoundException("Tag with name " + tagname + " does not exist");
-        tagRepository.deleteAll(tags);
+        TagEntity tag = tagRepository.findByName(tagname)
+                .orElseThrow(() -> new EntityNotFoundException("Tag with name " + tagname + " does not exist"));
+        tagRepository.delete(tag);
     }
 }
