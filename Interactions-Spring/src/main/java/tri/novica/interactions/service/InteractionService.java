@@ -14,8 +14,9 @@ import tri.novica.interactions.repository.InteractionRepository;
 import tri.novica.interactions.repository.PersonRepository;
 import tri.novica.interactions.repository.TagRepository;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -55,21 +56,21 @@ public class InteractionService {
     }
 
     private void setPersons(InteractionEntity interactionEntity) {
-        List<PersonEntity> personEntities = new ArrayList<>();
+        Set<PersonEntity> personEntities = new HashSet<>();
         interactionEntity.getPersons().forEach(
                 person -> {
                     personEntities.add(personRepository.findById(person.getId())
                             .orElseThrow(() -> new EntityNotFoundException("Person not found! ID: " + person.getId())));
                 });
-        interactionEntity.setPersons(personEntities);
+        interactionEntity.setPersons(personEntities.stream().toList());
     }
 
     private void setTags(InteractionEntity interactionEntity) {
-        List<TagEntity> tagEntities = new ArrayList<>();
+        Set<TagEntity> tagEntities = new HashSet<>();
         interactionEntity.getTags().forEach(
                 tag -> {
                     final Long id = tag.getId();
-                    if (id != null) {
+                    if (id != null && id != 0) {
                         tag = tagRepository.findById(id)
                                 .orElseThrow(() -> new EntityNotFoundException("Tag not found! ID: " + id));
                     } else {
@@ -80,7 +81,7 @@ public class InteractionService {
                     }
                     tagEntities.add(tag);
                 });
-        interactionEntity.setTags(tagEntities);
+        interactionEntity.setTags(tagEntities.stream().toList());
     }
 
 }
