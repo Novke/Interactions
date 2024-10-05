@@ -22,7 +22,7 @@ public class InteractionEntity {
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "interactions")
     private List<PersonEntity> persons;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "interaction_tag",
             joinColumns = @JoinColumn(name = "interaction_id"),
