@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "osobe")
+@Table(name = "person")
 public class PersonEntity {
 
     @Id
@@ -18,6 +18,7 @@ public class PersonEntity {
 
     private String name;
     private String lastname;
+    private String description;
 
     @ManyToMany
     @JoinTable(
