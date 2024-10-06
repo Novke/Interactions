@@ -1,0 +1,10 @@
+<div class="container"> 
+    <h1>People</h1>
+
+    <ul *ngFor="let p of persons" class="list-group">
+        <li class="list-group-item">
+            <h3>{{p.name}} {{p.lastname}}</h3>
+            <p>{{p.description}}</p>
+        </li>
+    </ul>
+</div>

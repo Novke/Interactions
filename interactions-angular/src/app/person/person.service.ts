@@ -17,4 +17,8 @@ export class PersonService {
   savePerson(person: Person): Observable<Person> {
     return this.http.post<Person>(this.apiUrl, person);
   }
+
+  getAll(): Observable<Person[]>{
+    return this.http.get<Person[]>(this.apiUrl);
+  }
 }
