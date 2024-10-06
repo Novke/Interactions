@@ -1,8 +1,11 @@
-<h1>Add new person</h1>
 
-<div>
-    <input [(ngModel)]="newPersonName" placeholder="Name">
-    <input [(ngModel)]="newPersonLastname" placeholder="Last name">
-    <br><br>
-    <button (click)="savePerson()">Save</button>
+
+<div class="container">
+    <h1 class="my-5">Add new person</h1>
+
+    <input [(ngModel)]="newPersonName" class="form-control my-3" placeholder="Name">
+    <input [(ngModel)]="newPersonLastname" class="form-control my-3" placeholder="Last name">
+    <br>
+    <input [(ngModel)]="newPersonDescription" class="form-control my-3" placeholder="Description">
+    <button (click)="savePerson()" class="btn btn-primary">Save</button>
 </div>
