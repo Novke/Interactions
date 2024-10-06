@@ -1,1 +1,8 @@
-<p>new-person works!</p>
+<h1>Add new person</h1>
+
+<div>
+    <input [(ngModel)]="newPersonName" placeholder="Name">
+    <input [(ngModel)]="newPersonLastname" placeholder="Last name">
+    <br><br>
+    <button (click)="savePerson()">Save</button>
+</div>

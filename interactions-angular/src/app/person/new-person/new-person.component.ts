@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class NewPersonComponent {
 
+  newPersonName = ""
+  newPersonLastname = ""
+
+  savePerson(): void{
+    console.log("Saving person ", this.newPersonName, this.newPersonLastname)
+  }
+
 }
