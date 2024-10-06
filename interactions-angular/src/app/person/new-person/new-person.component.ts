@@ -9,6 +9,7 @@ export class NewPersonComponent {
 
   newPersonName = ""
   newPersonLastname = ""
+  newPersonDescription = ""
 
   savePerson(): void{
     console.log("Saving person ", this.newPersonName, this.newPersonLastname)
